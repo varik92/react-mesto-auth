@@ -7,9 +7,8 @@ export default function InfoTooltip({ onClose, isOpen, isSuccessful }) {
                 <button type="button" aria-label="Закрыть"
                     className="popup__button-close popup__button-close_type_info" onClick={onClose}></button>
                 <div className={`popup__status ${isSuccessful ? 'popup__status_success' : 'popup__status_fail'}`}></div>
-                <a className="popup__message">{isSuccessful ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так! Попробуйте еще раз.'}</a>
+                <p className="popup__message">{isSuccessful ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так! Попробуйте еще раз.'}</p>
             </div>
         </div >
-
     )
 }

@@ -48,14 +48,18 @@ function App() {
   }
 
   React.useEffect(() => {
-    api.getInitialCards().then((res) => setCards(res)).catch((err) => console.log(err))
-  }, [])
+    if (loggedIn) {
+      api.getInitialCards().then((res) => setCards(res)).catch((err) => console.log(err))
+    }
+  }, [loggedIn])
 
   React.useEffect(() => {
-    api.getUserInfo().then((res) => {
-      setCurrentUser(res)
-    }).catch((err) => console.log(err))
-  }, [])
+    if (loggedIn) {
+      api.getUserInfo().then((res) => {
+        setCurrentUser(res)
+      }).catch((err) => console.log(err))
+    }
+  }, [loggedIn])
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -185,7 +189,7 @@ function App() {
               {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
             </Route>
           </Switch>
-          <Footer />
+
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
           <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace} />
           <DeleteConfirmPopup isOpen={isDeletePopupOpen} onClose={closeAllPopups} onConfirm={handleCardDelete} card={cardToDelete} />

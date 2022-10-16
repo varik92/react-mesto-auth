@@ -2,7 +2,7 @@ import React from "react";
 import { api } from '../utils/api.js';
 import Card from "./Card.js";
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
-import Header from "./Header.js";
+import Footer from "./Footer";
 
 export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards,
     onCardLike, onCardDelete, loggedIn }) {
@@ -11,7 +11,6 @@ export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardCl
 
     return (
         <>
-
             <main>
                 <section className="profile">
                     <div className="profile__main">
@@ -41,7 +40,7 @@ export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardCl
                     </ul>
                 </section>
             </main >
+            <Footer />
         </>
-
     )
 }
