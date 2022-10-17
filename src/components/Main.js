@@ -1,11 +1,10 @@
 import React from "react";
-import { api } from '../utils/api.js';
 import Card from "./Card.js";
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Footer from "./Footer";
 
 export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards,
-    onCardLike, onCardDelete, loggedIn }) {
+    onCardLike, onCardDelete }) {
 
     const currentUser = React.useContext(CurrentUserContext);
 

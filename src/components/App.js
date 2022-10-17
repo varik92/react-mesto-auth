@@ -3,7 +3,6 @@ import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Header from './Header.js';
 import Main from './Main.js';
-import Footer from './Footer.js';
 import ImagePopup from './ImagePopup.js';
 import { api } from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
@@ -37,14 +36,14 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
+    }).catch((err) => console.log(err))
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id).then(() => {
       setCards((res) => res.filter((c) => card._id !== c._id))
       closeAllPopups()
-    })
+    }).catch((err) => console.log(err))
   }
 
   React.useEffect(() => {
@@ -74,7 +73,7 @@ function App() {
         })
         .catch(err => { console.log(err); })
     }
-  }, []);
+  }, [history]);
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
